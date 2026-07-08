@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+<title>Tina @ 60 — You're Invited</title>
+
+<!--
+  ============================================================
+  TINA @ 60 — DIGITAL INVITATION (Revision 2)
+  Built from "Digital_Invitation_Details_-_Rhovin_Nario.xlsx"
+  including the "For revision" tab notes.
+  Theme: Sage & Emerald Green
+  Sections: Cover (click to open) → Message → Countdown →
+  Date/Time/Venue → Attire → Gift Ideas → Program → Gallery
+
+  Files:
+    index.html  — markup (this file)
+    style.css   — all styling
+    script.js   — countdown, tabs, program list, music toggle
+    attires/    — updated attire sample photos
+    images/     — cover icon
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ===== COVER: click the icon to open the invitation ===== -->
+<div id="cover">
+  <div class="cover-frame">
+    <div class="eyebrow">Save the Date</div>
+    <h1>Tina<span>at Sixty</span></h1>
+    <div class="gown" id="openInvite" title="Click to open your invitation">
+      <img src="images/cover-icon.png" alt="Tap to open invitation">
+    </div>
+    <div class="click-hint">Tap to open</div>
+  </div>
+</div>
+
+<!-- ===== MAIN INVITATION CONTENT ===== -->
+<main>
+
+  <section id="message">
+    <div class="eyebrow-line">You Are Invited</div>
+    <h2>You are invited to<br>Tina's 60th Birthday</h2>
+    <div class="divider"></div>
+    <p class="lede">Come and join with us as we celebrate six wonderful decades of Tina's life —
+      a day of laughter, gratitude, and gathered hearts, wrapped in green.</p>
+  </section>
+
+  <section id="countdown-wrap">
+    <div class="eyebrow-line">Counting Down To</div>
+    <h2>August 2, 2026</h2>
+    <div class="countdown" id="countdown">
+      <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Minutes</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Seconds</div></div>
+    </div>
+    <div class="cd-note">"Please be on time!" — 8:30 AM sharp, Sunday</div>
+  </section>
+
+  <section id="details">
+    <div class="eyebrow-line">The Details</div>
+    <h2>Date, Time &amp; Venue</h2>
+    <div class="detail-card">
+      <div class="detail-row">
+        <div class="detail-icon">&#128197;</div>
+        <div>
+          <div class="detail-label">Date</div>
+          <div class="detail-value">August 2, 2026 (Sunday)</div>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">&#128336;</div>
+        <div>
+          <div class="detail-label">Time</div>
+          <div class="detail-value">8:30 AM — please be on time!</div>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">&#128205;</div>
+        <div>
+          <div class="detail-label">Venue</div>
+          <div class="detail-value">
+            Stalla Suites Events Place<br>
+            1008 Quezon Ave, Diliman, Quezon City, 1003 Metro Manila
+          </div>
+          <div class="btn-row">
+            <a class="btn" href="https://www.google.com/maps/place/Stalla+Suites+Events+Place/@14.6323211,121.0176849,17.51z/data=!4m6!3m5!1s0x3397b743ff1d45cd:0x6b408ae166af4c5e!8m2!3d14.632616!4d121.0194174!16s%2Fg%2F11svyw8dds" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">&#128663;</div>
+        <div>
+          <div class="detail-label">Parking</div>
+          <div class="detail-value">Parking is available on a first-come, first-served basis.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="attire">
+    <div class="eyebrow-line">Dress Code</div>
+    <h2>Attire</h2>
+    <p class="lede">Please join us in your finest formal attire as we celebrate this special occasion.</p>
+    <div class="attire-grid">
+      <div class="attire-card">
+        <h3>Gentleman</h3>
+        <p>Suit or a long-sleeve polo. Dark slacks, smart shoes.</p>
+        <div class="sample-grid">
+          <img src="attires/gentleman-1.jpg" alt="Formal menswear sample look" loading="lazy">
+          <img src="attires/gentleman-2.jpg" alt="Smart-casual menswear sample look" loading="lazy">
+          <img src="attires/gentleman-3.jpg" alt="Formal menswear sample look" loading="lazy">
+          <img src="attires/gentleman-4.jpg" alt="Smart-casual menswear sample look" loading="lazy">
+        </div>
+      </div>
+      <div class="attire-card">
+        <h3>Ladies</h3>
+        <p>Formal dress, cocktail, or long dress. Comfortable footwear recommended.</p>
+        <div class="sample-grid">
+          <img src="attires/ladies-1.jpg" alt="Formal dress sample look" loading="lazy">
+          <img src="attires/ladies-2.jpg" alt="Formal dress sample look" loading="lazy">
+          <img src="attires/ladies-3.jpg" alt="Formal dress sample look" loading="lazy">
+          <img src="attires/ladies-4.jpg" alt="Formal dress sample look" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="avoid-note">Kindly avoid sage green — reserved for the celebrant.</div>
+  </section>
+
+  <section id="gifts">
+    <div class="eyebrow-line">If You Wish</div>
+    <h2>Gift Ideas</h2>
+    <p class="lede">Your presence is truly the greatest gift. If you'd like to bring something extra, Tina would love:</p>
+    <div class="gift-grid">
+      <div class="gift-card"><div class="gicon">&#127859;</div><h4>Kitchen Tools</h4><p>Ceramic or non-stick pots &amp; pans</p></div>
+      <div class="gift-card"><div class="gicon">&#128092;</div><h4>Bags</h4><p>A new bag is always welcome</p></div>
+      <div class="gift-card"><div class="gicon">&#128176;</div><h4>Cash Gift</h4><p>Gratefully accepted, monetary gifts</p></div>
+    </div>
+  </section>
+
+  <section id="program">
+    <div class="eyebrow-line">Celebration Ritual</div>
+    <h2>The Program</h2>
+    <p class="lede" style="color:var(--sage-light)">A cherished 60th birthday tradition — twelve roses, twelve candles, twelve treasures, twelve shots, and twelve blue bills, each honoring a piece of Tina's journey.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="roses">12 Roses</button>
+      <button class="tab-btn" data-tab="candles">12 Candles</button>
+      <button class="tab-btn" data-tab="treasures">12 Treasures</button>
+      <button class="tab-btn" data-tab="shots">12 Shots</button>
+      <button class="tab-btn" data-tab="bills">12 Blue Bills</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-roses">
+      <div class="tab-desc">Twelve roses, twelve dances — each rose a memory shared with Tina.</div>
+      <ol class="name-list" id="list-roses"></ol>
+    </div>
+    <div class="tab-panel" id="tab-candles">
+      <div class="tab-desc">Twelve candles lit in gratitude for the years behind and ahead.</div>
+      <ol class="name-list" id="list-candles"></ol>
+    </div>
+    <div class="tab-panel" id="tab-treasures">
+      <div class="tab-desc">Twelve treasures — the people Tina holds dear.</div>
+      <ol class="name-list" id="list-treasures"></ol>
+    </div>
+    <div class="tab-panel" id="tab-shots">
+      <div class="tab-desc">Twelve shots, twelve toasts — cheers to Tina's sixty years.</div>
+      <ol class="name-list" id="list-shots"></ol>
+    </div>
+    <div class="tab-panel" id="tab-bills">
+      <div class="tab-desc">Twelve blue bills, a gesture of blessing for the years to come.</div>
+      <ol class="name-list" id="list-bills"></ol>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="eyebrow-line">A Few Favorites</div>
+    <h2>Gallery</h2>
+    <p class="lede">A little glimpse of Tina through the years. More photos coming soon!</p>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-placeholder"><span>&#128247;</span></div>
+      <div class="gallery-placeholder"><span>&#128247;</span></div>
+      <div class="gallery-placeholder"><span>&#128247;</span></div>
+      <div class="gallery-placeholder"><span>&#128247;</span></div>
+    </div>
+    <div class="gallery-note">Photos are being curated and will be added here soon.</div>
+  </section>
+
+  <footer>
+    <span class="serif">With love, Tina's Family</span>
+    We can't wait to celebrate with you on August 2, 2026.
+  </footer>
+
+</main>
+
+<!-- Background music control -->
+<button id="music-toggle" title="Play / mute music">&#9835;</button>
+<div id="yt-audio"></div>
+<!-- YouTube IFrame API used for "You'll be in my heart - Niki" background music -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
+<script src="script.js"></script>
+</body>
+</html>
