@@ -7,18 +7,23 @@
 
 <!--
   ============================================================
-  TINA @ 60 — DIGITAL INVITATION (Revision 3)
+  TINA @ 60 — DIGITAL INVITATION (Revision 5)
   Theme: Sage & Emerald Green
 
-  Revision 3 changes:
-    1) Music toggle now has a "Click me" callout bubble
-    2) Gallery now shows 6 real photos
-    3) Background photos added to "You Are Invited" (message)
-       and "Gift Ideas" sections
-    4) Program list updates:
-         - 12 Roses: #5 is now Mark Dan Gil (Bernard removed)
-         - 12 Treasures: #6 Sale Udaundo, #7 Mary Ann Solis
-           (Maricel removed, Sale/Hershey switched numbers)
+  Revision 5 changes:
+    1) Whole site now renders inside a fixed-width "app shell" so
+       every page looks phone-scale on any device, desktop included
+    2) Gift Ideas cards are now frosted glass instead of solid white,
+       so the background photo shows through clearly
+    3) "Click me — see photos below" button restyled as a glassy gold
+       pill with icon + glow, smooth-scrolls to the Gallery section
+
+  Carried over from earlier revisions:
+    - Music toggle "Click me!" callout bubble
+    - Gallery with 6 real photos
+    - Background photos on "You Are Invited" and "Gift Ideas"
+    - Program list updates (Roses #5 Mark Dan Gil; Treasures #6 Sale
+      Udaundo, #7 Mary Ann Solis)
 
   Sections: Cover (click to open) → Message → Countdown →
   Date/Time/Venue → Attire → Gift Ideas → Program → Gallery
@@ -40,6 +45,9 @@
 </head>
 <body>
 
+<!-- ===== APP SHELL: keeps the whole invitation at a phone-like scale
+     on every device, including desktop ===== -->
+<div id="app-shell">
 
 <!-- ===== COVER: click the icon to open the invitation ===== -->
 <div id="cover">
@@ -64,7 +72,10 @@
       <div class="divider"></div>
       <p class="lede">Come and join with us as we celebrate six wonderful decades of Tina's life —
         a day of laughter, gratitude, and gathered hearts, wrapped in green.</p>
-      <a href="#gallery" class="gallery-jump-btn">Click me (see photos below)</a>
+      <a href="#gallery" class="gallery-jump-btn">
+        <span class="gjb-icon">&#128247;</span>
+        <span>Click me <em>— see photos below</em></span>
+      </a>
     </div>
   </section>
 
@@ -232,6 +243,9 @@
   </button>
 </div>
 <div id="yt-audio"></div>
+
+</div><!-- /#app-shell -->
+
 <!-- YouTube IFrame API used for "You'll be in my heart - Niki" background music -->
 <script src="https://www.youtube.com/iframe_api"></script>
 
@@ -239,3 +253,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
