@@ -54,36 +54,28 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* ===================== COVER OPEN ===================== */
-let wantsMusic = false; // set true the moment the guest opens the invite (a real user gesture)
 document.getElementById('openInvite').addEventListener('click', ()=>{
   document.getElementById('cover').classList.add('opened');
   // #app-shell is the scroll container now (not window/body), so make
   // sure the guest lands at the very top of the invitation there.
   const shell = document.getElementById('app-shell');
   if (shell) shell.scrollTo({top: 0, left: 0, behavior: 'auto'});
-  wantsMusic = true;
-  playMusic(); // will actually start once the YouTube player finishes loading (see onReady below)
+  // Called directly inside this click handler (same tap, no delay) so
+  // iOS Safari counts it as coming from a real user gesture and allows
+  // audio to start immediately.
+  playMusic();
+  dismissMusicCallout();
 });
 
 /* ===================== BACKGROUND MUSIC ===================== */
-// "You'll be in my heart - Niki" — https://www.youtube.com/watch?v=r27t3H36jmU
-let player, musicReady = false, isPlaying = false;
-function onYouTubeIframeAPIReady(){
-  player = new YT.Player('yt-audio', {
-    height:'0', width:'0', videoId:'r27t3H36jmU',
-    playerVars:{autoplay:0, loop:1, playlist:'r27t3H36jmU', controls:0, playsinline:1},
-    events:{
-      'onReady': ()=>{
-        musicReady = true;
-        // If the guest already tapped to open the invite before the player finished
-        // loading, start the music now instead of silently failing.
-        if(wantsMusic){ playMusic(); }
-      }
-    }
-  });
-}
+// Native <audio> element (see index.html: #bg-music, music/background-song.mp3).
+// Drop your own MP3 into a "music" folder next to index.html and name it
+// background-song.mp3 — or edit the <source src="..."> in index.html to
+// match your filename.
+const audio = document.getElementById('bg-music');
+let isPlaying = false;
+
 function setMusicIconPlaying(playing){
-  const iconPath = document.querySelector('#music-icon path');
   const toggle = document.getElementById('music-toggle');
   if(playing){
     toggle.classList.add('is-playing');
@@ -91,33 +83,39 @@ function setMusicIconPlaying(playing){
     toggle.classList.remove('is-playing');
   }
 }
+
 function playMusic(){
-  if(musicReady && player && player.playVideo){
-    player.playVideo();
-    isPlaying = true;
-    setMusicIconPlaying(true);
+  if(!audio) return;
+  const playPromise = audio.play();
+  if(playPromise !== undefined){
+    playPromise.then(()=>{
+      isPlaying = true;
+      setMusicIconPlaying(true);
+    }).catch(()=>{
+      // Autoplay was blocked for some reason — guest can still start
+      // it manually with the music button.
+      isPlaying = false;
+      setMusicIconPlaying(false);
+    });
   }
 }
+
 function dismissMusicCallout(){
   const callout = document.getElementById('music-callout');
   if(callout) callout.classList.add('hidden');
 }
+
 document.getElementById('music-toggle').addEventListener('click', ()=>{
-  wantsMusic = true;
   dismissMusicCallout();
-  if(!musicReady) return;
+  if(!audio) return;
   if(isPlaying){
-    player.pauseVideo();
+    audio.pause();
+    isPlaying = false;
     setMusicIconPlaying(false);
   } else {
-    player.playVideo();
-    setMusicIconPlaying(true);
+    playMusic();
   }
-  isPlaying = !isPlaying;
 });
-// Also dismiss the callout once the guest opens the invitation, since
-// music will already be attempting to play at that point.
-document.getElementById('openInvite').addEventListener('click', dismissMusicCallout);
 
 // Gently auto-hide the "Click me!" callout after a while so it doesn't
 // linger forever for guests who don't need the nudge.
