@@ -57,6 +57,10 @@ setInterval(updateCountdown, 1000);
 let wantsMusic = false; // set true the moment the guest opens the invite (a real user gesture)
 document.getElementById('openInvite').addEventListener('click', ()=>{
   document.getElementById('cover').classList.add('opened');
+  // #app-shell is the scroll container now (not window/body), so make
+  // sure the guest lands at the very top of the invitation there.
+  const shell = document.getElementById('app-shell');
+  if (shell) shell.scrollTo({top: 0, left: 0, behavior: 'auto'});
   wantsMusic = true;
   playMusic(); // will actually start once the YouTube player finishes loading (see onReady below)
 });
