@@ -1,9 +1,12 @@
 /* ===================== DATA ===================== */
-// Program participants, transcribed directly from the "Program" sheet (updated)
+// Program participants — updated per Revision 3 notes:
+//   Roses: #5 is now Mark Dan Gil (Bernard Madriaga removed)
+//   Treasures: #6 Sale Udaundo, #7 Mary Ann Solis
+//             (Maricel Gagnao removed; Sale & Hershey switched numbers)
 const program = {
-  roses: ["Danny Madriaga","Bong Madriaga","Dexter Madriaga","Reymyr Madriaga","Bernard Madriaga","Mark Jhon dela Cruz","Aldrin Castro","Erico Nario","Carlos Vincent Udaundo","Francis Karl Daligdig","Rhovin Cristian Nario","Ruben Nario"],
+  roses: ["Danny Madriaga","Bong Madriaga","Dexter Madriaga","Reymyr Madriaga","Mark Dan Gil","Mark Jhon dela Cruz","Aldrin Castro","Erico Nario","Carlos Vincent Udaundo","Francis Karl Daligdig","Rhovin Cristian Nario","Ruben Nario"],
   candles: ["Myrna Edejer","Remedios Salazar","Lorine Madriaga","Edita Madriaga","Helen Gabata","Ruby Castro","Gina Caballero","Irene Tayo","Susan Nario","Raquel Cruz","Josefina Tibay","Criselda Borebor"],
-  treasures: ["Renalyn Kaye Gil","Ailish Rain Helera","Jan Pauline Cruz","Mara Clarisse Tayo","Khamille Merciales","Hershey Santos","Maricel Gagnao","Sale Udaundo","Brett Pantaleon","Sarah Firman","Imelda dela Cruz","Raquel Brazal"],
+  treasures: ["Renalyn Kaye Gil","Ailish Rain Helera","Jan Pauline Cruz","Mara Clarisse Tayo","Khamille Merciales","Sale Udaundo","Mary Ann Solis","Hershey Santos","Brett Pantaleon","Sarah Firman","Imelda dela Cruz","Raquel Brazal"],
   shots: ["Alfred Madriaga","Reymond Edejer","Hans Madriaga","Darwin Gerald Udaundo","Warren Daligdig","John Neslie Leano","Simon Enofre","Virgilio Tibay","Merarie Caballero","Tony Tayo","Renan Cruz","Henry Cabrillas"],
   bills: ["Rem Edejer","Paolo Madriaga","Ranel James Rigo","Aaron Castro","Ryan Rasheed Lazo","Jerum Jerusalem","Nikka Ella Udaundo","Noreen Asia Batalla","Mira Inah Caballero","Shane Marie Jalandoni","Gianne Kaye Durante","Veronica Nario"]
 };
@@ -75,22 +78,43 @@ function onYouTubeIframeAPIReady(){
     }
   });
 }
+function setMusicIconPlaying(playing){
+  const iconPath = document.querySelector('#music-icon path');
+  const toggle = document.getElementById('music-toggle');
+  if(playing){
+    toggle.classList.add('is-playing');
+  } else {
+    toggle.classList.remove('is-playing');
+  }
+}
 function playMusic(){
   if(musicReady && player && player.playVideo){
     player.playVideo();
     isPlaying = true;
-    document.getElementById('music-toggle').innerHTML = '&#9834;';
+    setMusicIconPlaying(true);
   }
+}
+function dismissMusicCallout(){
+  const callout = document.getElementById('music-callout');
+  if(callout) callout.classList.add('hidden');
 }
 document.getElementById('music-toggle').addEventListener('click', ()=>{
   wantsMusic = true;
+  dismissMusicCallout();
   if(!musicReady) return;
   if(isPlaying){
     player.pauseVideo();
-    document.getElementById('music-toggle').innerHTML = '&#9711;';
+    setMusicIconPlaying(false);
   } else {
     player.playVideo();
-    document.getElementById('music-toggle').innerHTML = '&#9834;';
+    setMusicIconPlaying(true);
   }
   isPlaying = !isPlaying;
 });
+// Also dismiss the callout once the guest opens the invitation, since
+// music will already be attempting to play at that point.
+document.getElementById('openInvite').addEventListener('click', dismissMusicCallout);
+
+// Gently auto-hide the "Click me!" callout after a while so it doesn't
+// linger forever for guests who don't need the nudge.
+setTimeout(dismissMusicCallout, 12000);
