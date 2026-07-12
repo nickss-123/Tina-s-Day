@@ -7,19 +7,29 @@
 
 <!--
   ============================================================
-  TINA @ 60 — DIGITAL INVITATION (Revision 2)
-  Built from "Digital_Invitation_Details_-_Rhovin_Nario.xlsx"
-  including the "For revision" tab notes.
+  TINA @ 60 — DIGITAL INVITATION (Revision 3)
   Theme: Sage & Emerald Green
+
+  Revision 3 changes:
+    1) Music toggle now has a "Click me" callout bubble
+    2) Gallery now shows 6 real photos
+    3) Background photos added to "You Are Invited" (message)
+       and "Gift Ideas" sections
+    4) Program list updates:
+         - 12 Roses: #5 is now Mark Dan Gil (Bernard removed)
+         - 12 Treasures: #6 Sale Udaundo, #7 Mary Ann Solis
+           (Maricel removed, Sale/Hershey switched numbers)
+
   Sections: Cover (click to open) → Message → Countdown →
   Date/Time/Venue → Attire → Gift Ideas → Program → Gallery
 
   Files:
-    index.html  — markup (this file)
-    style.css   — all styling
-    script.js   — countdown, tabs, program list, music toggle
-    attires/    — updated attire sample photos
-    images/     — cover icon
+    index.html   — markup (this file)
+    style.css    — all styling
+    script.js    — countdown, tabs, program list, music toggle
+    attires/     — attire sample photos (carried over from prior revision)
+    images/      — cover icon + section background photos
+    gallery/     — 6 gallery photos
   ============================================================
 -->
 
@@ -46,12 +56,15 @@
 <!-- ===== MAIN INVITATION CONTENT ===== -->
 <main>
 
-  <section id="message">
-    <div class="eyebrow-line">You Are Invited</div>
-    <h2>You are invited to<br>Tina's 60th Birthday</h2>
-    <div class="divider"></div>
-    <p class="lede">Come and join with us as we celebrate six wonderful decades of Tina's life —
-      a day of laughter, gratitude, and gathered hearts, wrapped in green.</p>
+  <section id="message" class="has-bg">
+    <div class="section-overlay"></div>
+    <div class="section-inner">
+      <div class="eyebrow-line">You Are Invited</div>
+      <h2>You are invited to<br>Tina's 60th Birthday</h2>
+      <div class="divider"></div>
+      <p class="lede">Come and join with us as we celebrate six wonderful decades of Tina's life —
+        a day of laughter, gratitude, and gathered hearts, wrapped in green.</p>
+    </div>
   </section>
 
   <section id="countdown-wrap">
@@ -136,14 +149,17 @@
     <div class="avoid-note">Kindly avoid sage green — reserved for the celebrant.</div>
   </section>
 
-  <section id="gifts">
-    <div class="eyebrow-line">If You Wish</div>
-    <h2>Gift Ideas</h2>
-    <p class="lede">Your presence is truly the greatest gift. If you'd like to bring something extra, Tina would love:</p>
-    <div class="gift-grid">
-      <div class="gift-card"><div class="gicon">&#127859;</div><h4>Kitchen Tools</h4><p>Ceramic or non-stick pots &amp; pans</p></div>
-      <div class="gift-card"><div class="gicon">&#128092;</div><h4>Bags</h4><p>A new bag is always welcome</p></div>
-      <div class="gift-card"><div class="gicon">&#128176;</div><h4>Cash Gift</h4><p>Gratefully accepted, monetary gifts</p></div>
+  <section id="gifts" class="has-bg">
+    <div class="section-overlay"></div>
+    <div class="section-inner">
+      <div class="eyebrow-line">If You Wish</div>
+      <h2>Gift Ideas</h2>
+      <p class="lede">Your presence is truly the greatest gift. If you'd like to bring something extra, Tina would love:</p>
+      <div class="gift-grid">
+        <div class="gift-card"><div class="gicon">&#127859;</div><h4>Kitchen Tools</h4><p>Ceramic or non-stick pots &amp; pans</p></div>
+        <div class="gift-card"><div class="gicon">&#128092;</div><h4>Bags</h4><p>A new bag is always welcome</p></div>
+        <div class="gift-card"><div class="gicon">&#128176;</div><h4>Cash Gift</h4><p>Gratefully accepted, monetary gifts</p></div>
+      </div>
     </div>
   </section>
 
@@ -185,14 +201,15 @@
   <section id="gallery">
     <div class="eyebrow-line">A Few Favorites</div>
     <h2>Gallery</h2>
-    <p class="lede">A little glimpse of Tina through the years. More photos coming soon!</p>
+    <p class="lede">A little glimpse of Tina through the years.</p>
     <div class="gallery-grid" id="gallery-grid">
-      <div class="gallery-placeholder"><span>&#128247;</span></div>
-      <div class="gallery-placeholder"><span>&#128247;</span></div>
-      <div class="gallery-placeholder"><span>&#128247;</span></div>
-      <div class="gallery-placeholder"><span>&#128247;</span></div>
+      <div class="gallery-item"><img src="gallery/gallery-1.jpg" alt="Tina celebrating her 60th birthday" loading="lazy"></div>
+      <div class="gallery-item"><img src="gallery/gallery-2.jpg" alt="Tina celebrating her 60th birthday" loading="lazy"></div>
+      <div class="gallery-item"><img src="gallery/gallery-3.jpg" alt="Tina celebrating her 60th birthday" loading="lazy"></div>
+      <div class="gallery-item"><img src="gallery/gallery-4.jpg" alt="Tina celebrating her 60th birthday" loading="lazy"></div>
+      <div class="gallery-item"><img src="gallery/gallery-5.jpg" alt="Tina celebrating her 60th birthday" loading="lazy"></div>
+      <div class="gallery-item"><img src="gallery/gallery-6.jpg" alt="Tina celebrating her 60th birthday" loading="lazy"></div>
     </div>
-    <div class="gallery-note">Photos are being curated and will be added here soon.</div>
   </section>
 
   <footer>
@@ -203,7 +220,16 @@
 </main>
 
 <!-- Background music control -->
-<button id="music-toggle" title="Play / mute music">&#9835;</button>
+<div id="music-widget">
+  <div id="music-callout">Click me!</div>
+  <button id="music-toggle" title="Play / mute music">
+    <svg id="music-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/>
+    </svg>
+  </button>
+</div>
 <div id="yt-audio"></div>
 <!-- YouTube IFrame API used for "You'll be in my heart - Niki" background music -->
 <script src="https://www.youtube.com/iframe_api"></script>
