@@ -188,11 +188,50 @@
     background-image:url('images/bg-message.jpg');
   }
 
+  .gallery-jump-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:32px;
+    padding:13px 28px;
+    border-radius:30px;
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--cream);
+    text-decoration:none;
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .gallery-jump-btn:hover{
+    background:var(--gold);
+    color:var(--emerald-deep);
+    transform:translateY(-2px);
+  }
+  .gallery-jump-btn::after{
+    content:"↓";
+    font-size:1rem;
+    transition:transform .25s ease;
+  }
+  .gallery-jump-btn:hover::after{
+    transform:translateY(3px);
+  }
+
   #gifts{
     background-image:url('images/bg-gifts.jpg');
   }
+  #gifts .section-overlay{
+    background:linear-gradient(180deg, rgba(18,53,36,0.42) 0%, rgba(18,53,36,0.32) 45%, rgba(45,106,79,0.48) 100%);
+  }
   #gifts .gift-card{
     background:rgba(250,246,238,0.94);
+  }
+  #gifts .eyebrow-line,
+  #gifts h2,
+  #gifts .lede{
+    text-shadow:0 2px 14px rgba(18,53,36,0.55);
   }
 
   /* Countdown */
