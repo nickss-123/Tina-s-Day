@@ -13,14 +13,19 @@
 
   *{margin:0;padding:0;box-sizing:border-box;}
 
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    height:100%;
+  }
 
   body{
     font-family:'Jost', sans-serif;
     color:var(--ink);
     /* Backdrop behind the phone-scale shell on wider screens */
     background:linear-gradient(160deg, #0c2419 0%, #1a3d2b 55%, #0c2419 100%);
-    min-height:100vh;
+    height:100vh;
+    height:100dvh; /* dynamic viewport height: ignores mobile browser toolbars */
+    overflow:hidden;
     display:flex;
     justify-content:center;
   }
@@ -34,18 +39,41 @@
   /* ---------- APP SHELL ----------
      Keeps the entire invitation rendered at a consistent, phone-like
      scale on every device — mobile, tablet, and desktop alike.
-     The transform below also makes this element the containing block
-     for any position:fixed children (cover, music widget), so they
-     stay confined to the shell instead of the full browser viewport. */
+
+     IMPORTANT: this is now the single scrolling container (not the
+     page/body). Giving it a fixed viewport-height (instead of only a
+     min-height) fixes two things at once:
+       1) The "tap to open" cover uses position:fixed, and because
+          this element has a transform, it becomes the containing
+          block for that fixed cover. Previously this box could grow
+          taller than the screen (min-height only), so the cover
+          centered itself inside the *whole page's* height instead of
+          just the visible screen — requiring a scroll to reach it.
+          Capping the height here keeps the cover locked to exactly
+          what's visible on load.
+       2) It lets us do slide-style, one-section-per-screen scrolling
+          with scroll-snap below.
+  */
   #app-shell{
     width:100%;
     max-width:var(--shell-max);
-    min-height:100vh;
+    height:100vh;
+    height:100dvh;
     position:relative;
     background:var(--cream);
+    overflow-y:auto;
     overflow-x:hidden;
     transform:translateZ(0);
     box-shadow:0 0 90px rgba(0,0,0,0.45);
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none; /* Firefox */
+    -ms-overflow-style:none; /* old Edge/IE */
+  }
+  #app-shell::-webkit-scrollbar{
+    width:0;
+    height:0;
+    display:none; /* Chrome, Safari, newer Edge */
   }
 
   /* ---------- COVER / CLICK TO OPEN ---------- */
@@ -143,6 +171,13 @@
     position:relative;
     z-index:1;
   }
+
+  /* Every section is now a full-screen "slide": at least one screen
+     tall, vertically centered content, and snaps into place as the
+     user scrolls. Sections with more content than one screen (e.g.
+     Attire, Program, Gallery) simply grow taller than one screen —
+     they still snap in at the top, and the extra content scrolls
+     normally before the next section snaps in. */
   section{
     padding:64px 22px;
     max-width:100%;
@@ -201,6 +236,7 @@
     margin:0 auto;
     padding:76px 22px;
     text-align:center;
+    width:100%;
   }
   section.has-bg .eyebrow-line{color:var(--sage-light);}
   section.has-bg h2{color:var(--cream);}
@@ -279,13 +315,13 @@
     margin-top:28px;
   }
   #gifts .gift-card{
-    /* Frosted glass instead of a solid white fill, so the background
-       photo stays visible through the cards */
-    background:rgba(255,255,255,0.22);
-    backdrop-filter:blur(10px) saturate(140%);
-    -webkit-backdrop-filter:blur(10px) saturate(140%);
-    border:1px solid rgba(255,255,255,0.35);
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    /* Barely-there glass so the background photo reads through almost
+       fully — just enough tint/blur to keep the text legible */
+    background:rgba(255,255,255,0.10);
+    backdrop-filter:blur(2px) saturate(120%);
+    -webkit-backdrop-filter:blur(2px) saturate(120%);
+    border:1px solid rgba(255,255,255,0.28);
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
   }
   #gifts .gift-card h4{color:var(--cream);text-shadow:0 1px 8px rgba(18,53,36,0.5);}
   #gifts .gift-card p{color:var(--sage-light);}
@@ -527,7 +563,6 @@
     transform:scale(1.06);
   }
 
-  /* Footer */
   footer{
     text-align:center;
     padding:50px 22px 90px;
