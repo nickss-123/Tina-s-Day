@@ -7,18 +7,23 @@
 
 <!--
   ============================================================
-  TINA @ 60 — DIGITAL INVITATION (Revision 5)
+  TINA @ 60 — DIGITAL INVITATION (Revision 6)
   Theme: Sage & Emerald Green
 
-  Revision 5 changes:
-    1) Whole site now renders inside a fixed-width "app shell" so
-       every page looks phone-scale on any device, desktop included
-    2) Gift Ideas cards are now frosted glass instead of solid white,
-       so the background photo shows through clearly
-    3) "Click me — see photos below" button restyled as a glassy gold
-       pill with icon + glow, smooth-scrolls to the Gallery section
+  Revision 6 changes:
+    1) Fixed a bug where the "tap to open" cover required scrolling
+       to reach — #app-shell now has a fixed viewport-relative height
+       (100dvh) instead of only a min-height, so the fixed-position
+       cover (and music widget) correctly hug the visible screen
+       instead of centering inside the full scrollable page height.
+    2) Added slide-style scroll-snapping: each section now fills at
+       least one full screen and snaps into place as you scroll,
+       with a smooth scrolling feel between them.
 
   Carried over from earlier revisions:
+    - Whole site renders inside a fixed-width "app shell"
+    - Gift Ideas cards are frosted glass over a background photo
+    - "Click me — see photos below" button smooth-scrolls to Gallery
     - Music toggle "Click me!" callout bubble
     - Gallery with 6 real photos
     - Background photos on "You Are Invited" and "Gift Ideas"
@@ -46,7 +51,10 @@
 <body>
 
 <!-- ===== APP SHELL: keeps the whole invitation at a phone-like scale
-     on every device, including desktop ===== -->
+     on every device, including desktop. It is now also the single
+     scrolling container (see style.css), which is what lets the
+     fixed cover/music widget stay locked to the visible screen and
+     lets each section snap to fill exactly one screen. ===== -->
 <div id="app-shell">
 
 <!-- ===== COVER: click the icon to open the invitation ===== -->
@@ -253,4 +261,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
