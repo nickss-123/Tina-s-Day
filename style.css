@@ -65,6 +65,7 @@
     overflow-x:hidden;
     transform:translateZ(0);
     box-shadow:0 0 90px rgba(0,0,0,0.45);
+    scroll-snap-type:y mandatory;
     scroll-behavior:smooth;
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none; /* Firefox */
@@ -183,6 +184,13 @@
     max-width:100%;
     margin:0 auto;
     text-align:center;
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
   }
   .eyebrow-line{
     letter-spacing:0.3em;
@@ -568,6 +576,14 @@
     padding:50px 22px 90px;
     color:var(--emerald);
     font-size:0.82rem;
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
   }
   footer .serif{font-size:1.2rem;color:var(--emerald-deep);display:block;margin-bottom:8px;}
 
