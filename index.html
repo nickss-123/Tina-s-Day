@@ -7,37 +7,29 @@
 
 <!--
   ============================================================
-  TINA @ 60 — DIGITAL INVITATION (Revision 6)
+  TINA @ 60 — DIGITAL INVITATION (Revision 7)
   Theme: Sage & Emerald Green
 
-  Revision 7 changes:
-    1) Fixed a bug where the "tap to open" cover required scrolling
-       to reach — #app-shell now has a fixed viewport-relative height
-       (100dvh) instead of only a min-height, so the fixed-position
-       cover (and music widget) correctly hug the visible screen
-       instead of centering inside the full scrollable page height.
-    2) Added slide-style scroll-snapping: each section now fills at
-       least one full screen and snaps into place as you scroll,
-       with a smooth scrolling feel between them.
-    3) Swapped the YouTube iframe for a native <audio> element
-       (music/background-song.mp3) — far more reliable for
-       autoplay-on-tap on iPhone/Safari than a cross-origin iframe.
-       Drop your own MP3 into a "music" folder next to this file and
-       name it background-song.mp3 (or update the <source src="...">
-       in index.html to match your filename).
+  Revision 8 changes:
+    1) Added an "Inquiries" page after the closing thank-you footer,
+       for guests who'd like a similar customized event website.
+       Includes portfolio link and email contact.
 
   Carried over from earlier revisions:
     - Whole site renders inside a fixed-width "app shell"
+    - Fixed cover + slide-style scroll-snapping sections
+    - Native <audio> background music
     - Gift Ideas cards are frosted glass over a background photo
     - "Click me — see photos below" button smooth-scrolls to Gallery
     - Music toggle "Click me!" callout bubble
     - Gallery with 6 real photos
     - Background photos on "You Are Invited" and "Gift Ideas"
-    - Program list updates (Roses #5 Mark Dan Gil; Treasures #6 Sale
-      Udaundo, #7 Mary Ann Solis)
+    - Program list updates (Roses #5 Mark Dan Gil; Treasures
+      6:Hershey Santos, 7:Sale Udaundo, 8:Mary Ann Solis)
 
   Sections: Cover (click to open) → Message → Countdown →
-  Date/Time/Venue → Attire → Gift Ideas → Program → Gallery
+  Date/Time/Venue → Attire → Gift Ideas → Program → Gallery →
+  Thank You → Inquiries
 
   Files:
     index.html   — markup (this file)
@@ -239,6 +231,22 @@
     <span class="serif">With love, Tina's Family</span>
     We can't wait to celebrate with you on August 2, 2026.
   </footer>
+
+  <section id="inquiries">
+    <div class="eyebrow-line">Like This Invitation?</div>
+    <h2>Inquiries</h2>
+    <p class="lede">This digital invitation was custom-built. If you'd like a similar personalized website for your own event, feel free to reach out.</p>
+    <div class="inquiry-card">
+      <div class="inquiry-row">
+        <div class="inquiry-label">Portfolio</div>
+        <a class="btn" href="https://fn-abesamis-portfolio.vercel.app" target="_blank" rel="noopener">fn-abesamis-portfolio.vercel.app</a>
+      </div>
+      <div class="inquiry-row">
+        <div class="inquiry-label">Email</div>
+        <a class="btn" href="mailto:nabesamis0@gmail.com">nabesamis0@gmail.com</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
