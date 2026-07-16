@@ -7,7 +7,7 @@
 const program = {
   roses: ["Danny Madriaga","Bong Madriaga","Dexter Madriaga","Reymyr Madriaga","Mark Dan Gil","Mark Jhon dela Cruz","Aldrin Castro","Erico Nario","Carlos Vincent Udaundo","Francis Karl Daligdig","Rhovin Cristian Nario","Ruben Nario"],
   candles: ["Myrna Edejer","Remedios Salazar","Lorine Madriaga","Edita Madriaga","Helen Gabata","Ruby Castro","Gina Caballero","Irene Tayo","Susan Nario","Raquel Cruz","Josefina Tibay","Criselda Borebor"],
-  treasures: ["Renalyn Kaye Gil","Ailish Rain Helera","Jan Pauline Cruz","Mara Clarisse Tayo","Khamille Merciales","Mary Ann Solis","Hershey Santos","Sale Udaundo","Brett Pantaleon","Sarah Firman","Imelda dela Cruz","Raquel Brazal"],
+  treasures: ["Renalyn Kaye Gil","Ailish Rain Helera","Jan Pauline Cruz","Mara Clarisse Tayo","Khamille Merciales","Hershey Santos","Sale Udaundo","Mary Ann Solis","Brett Pantaleon","Sarah Firman","Imelda dela Cruz","Raquel Brazal"]
   shots: ["Alfred Madriaga","Reymond Edejer","Hans Madriaga","Darwin Gerald Udaundo","Warren Daligdig","John Neslie Leano","Simon Enofre","Virgilio Tibay","Merarie Caballero","Tony Tayo","Renan Cruz","Henry Cabrillas"],
   bills: ["Rem Edejer","Paolo Madriaga","Ranel James Rigo","Aaron Castro","Ryan Rasheed Lazo","Jerum Jerusalem","Nikka Ella Udaundo","Noreen Asia Batalla","Mira Inah Caballero","Shane Marie Jalandoni","Gianne Kaye Durante","Veronica Nario"]
 };
