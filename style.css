@@ -532,6 +532,45 @@
   }
   footer .serif{font-size:1.2rem;color:var(--emerald-deep);display:block;margin-bottom:8px;}
 
+  /* ---------- INQUIRIES PAGE ----------
+     Final page after the thank-you footer, for guests interested in
+     a similar custom event website. Kept visually calm/neutral so it
+     reads as a distinct closing "card" rather than part of the
+     invitation itself. */
+  #inquiries{
+    background:var(--sage-light);
+  }
+  #inquiries .lede{
+    margin-bottom:6px;
+  }
+  .inquiry-card{
+    background:#fff;
+    border:1px solid var(--sage-light);
+    border-radius:10px;
+    padding:22px;
+    box-shadow:var(--shadow);
+    max-width:100%;
+    margin:26px auto 0;
+    text-align:left;
+  }
+  .inquiry-row{
+    padding:14px 0;
+    border-bottom:1px solid var(--sage-light);
+  }
+  .inquiry-row:last-child{border-bottom:none;}
+  .inquiry-label{
+    font-size:0.7rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--emerald);
+    margin-bottom:8px;
+  }
+  .inquiry-row .btn{
+    width:100%;
+    text-align:center;
+    word-break:break-word;
+  }
+
   /* ---------- MUSIC WIDGET (icon + "Click me" callout) ---------- */
   #music-widget{
     position:fixed;
