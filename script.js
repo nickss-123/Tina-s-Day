@@ -121,3 +121,4 @@ document.getElementById('music-toggle').addEventListener('click', ()=>{
 // Gently auto-hide the "Click me!" callout after a while so it doesn't
 // linger forever for guests who don't need the nudge.
 setTimeout(dismissMusicCallout, 12000);
+
